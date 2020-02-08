@@ -29,7 +29,11 @@ const addChatMessage = (message: string) => {
 
   messageDiv.classList.add('message');
 
-  messageDiv.innerText = `${jsonMessage.user} @ ${jsonMessage.timestamp}: ${jsonMessage.message}`;
+  const messageDate = new Date(jsonMessage.timestamp);
+
+  let messageTime = `${messageDate.getHours()}: ${messageDate.getMinutes()}`;
+
+  messageDiv.innerText = `${jsonMessage.user} @ ${messageTime}: ${jsonMessage.message}`;
 
   if (content) {
     content.appendChild(messageDiv);
